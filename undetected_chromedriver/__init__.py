@@ -254,7 +254,10 @@ class Chrome(selenium.webdriver.chrome.webdriver.WebDriver):
 
         options._session = self
 
-        debug_port = selenium.webdriver.common.service.utils.free_port()
+        if port == 0:
+            debug_port = selenium.webdriver.common.service.utils.free_port()
+        else:
+            debug_port = port
         debug_host = "127.0.0.1"
 
         if not options.debugger_address:
